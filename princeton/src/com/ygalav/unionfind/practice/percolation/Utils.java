@@ -15,11 +15,11 @@ public final class Utils {
         return  (delta >= lineSize || delta <= -lineSize);
     }
 
-    public static int[] getPaintedSquare(final int arryaSize, final double coef) {
-        int[] blackWriteSquare = new int[arryaSize];
+    public static int[] getPaintedSquare(final int arraySize, final double coef) {
+        int[] blackWriteSquare = new int[arraySize];
         int whiteNodesCount = 0;
-        while (((double)whiteNodesCount / (double)arryaSize) < coef) {
-            int currentIndex = getRandomNumberInRange(0, arryaSize);
+        while (((double)whiteNodesCount / (double)arraySize) < coef) {
+            int currentIndex = getRandomNumberInRange(0, arraySize);
             int currentValue = blackWriteSquare[currentIndex];
             if (currentValue == 0) {
                 blackWriteSquare[currentIndex] = 1;

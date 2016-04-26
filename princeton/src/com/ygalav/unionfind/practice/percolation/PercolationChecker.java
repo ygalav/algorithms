@@ -50,13 +50,15 @@ public class PercolationChecker {
 
 
 
-    public boolean isPercolated() {
+    public boolean isPercolated(int[] blackWhiteSquare) {
         int unionArraySize = (int) Math.pow(this.square, 2);
         int unionArrayLastIndex = unionArraySize - 1;
         int unionArrayBottomRowStartIndex = unionArraySize - square;
 
         for (int i = 0; i < square; i++) {
+            if (blackWhiteSquare[i] == 0) continue;
             for (int j = unionArrayLastIndex; j >= unionArrayBottomRowStartIndex; j--) {
+                if (blackWhiteSquare[j] == 0) continue;
                 if (connected(i, j)) {
                     return true;
                 }
@@ -83,7 +85,7 @@ public class PercolationChecker {
         System.out.println("");
         drawSquare(blackWriteSquare);
         System.out.println("");
-        System.out.println(percolationChecker.isPercolated());
+        System.out.println(percolationChecker.isPercolated(blackWriteSquare));
         System.out.println("");
 
     }
@@ -101,9 +103,12 @@ public class PercolationChecker {
     }
 
     public static void main(String[] args) {
-        for (int i = 0; i < 10; i++ ) {
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < 3; i++ ) {
             System.out.println("Percolating:");
             PercolationChecker.percolate(4, 0.6);
         }
+        long endTime = System.currentTimeMillis();
+        System.out.println("Time taken= [" + (endTime - startTime) + "ms]");
     }
 }

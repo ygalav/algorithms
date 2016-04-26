@@ -1,5 +1,6 @@
 package com.ygalav.unionfind.practice.percolation;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -8,7 +9,14 @@ import static org.junit.Assert.*;
 
 public class PercolationCheckerTest {
 
-    private PercolationChecker testInstance = new PercolationChecker(4);
+    private int[] blackWhiteSquare;
+    private PercolationChecker testInstance;
+
+    @Before
+    public void setUp() throws Exception {
+        blackWhiteSquare = new int[]{1, 0, 0 ,0, 0, 0, 0, 0, 0, 0 ,0, 0, 1, 0, 0, 0};
+        testInstance = new PercolationChecker(4);
+    }
 
     @Test(expected = IllegalArgumentException.class)
     public void testUnion_shouldNotAllowToConnectNotStraightNodes() throws Exception {
@@ -29,7 +37,7 @@ public class PercolationCheckerTest {
         testInstance.union(9, 8);
         testInstance.union(8, 12);
 
-        assertTrue(testInstance.isPercolated());
+        assertTrue(testInstance.isPercolated(blackWhiteSquare));
     }
 
     @Test
@@ -39,7 +47,7 @@ public class PercolationCheckerTest {
         testInstance.union(5, 9);
         testInstance.union(9, 8);
 
-        assertFalse(testInstance.isPercolated());
+        assertFalse(testInstance.isPercolated(blackWhiteSquare));
     }
 
     @Test
