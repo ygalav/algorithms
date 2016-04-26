@@ -28,6 +28,10 @@ public class QuickUnion {
         return root(q) == root(p);
     }
 
+    public int[] getArray() {
+        return id;
+    }
+
 
     /**
      *
